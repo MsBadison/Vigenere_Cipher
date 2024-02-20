@@ -1,4 +1,4 @@
-# Vigenere_Cipher
+# Vigenere Cipher
 
 This is a simple console application that can encode/decode a string using the Vigenere Cipher and a given key. 
 
