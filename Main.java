@@ -4,6 +4,7 @@ public class Main {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
         int menuChoice;
+        boolean loop = true;
 
         do {
             showMenu();
@@ -17,9 +18,14 @@ public class Main {
                     decodeMenuOption();
                     break;
                 case 3:
-                    System.exit(0);
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Not a valid choice");
             }
-        } while (menuChoice != 3);
+        } while (loop);
+
+        System.exit(0);
     }
 
     /**
