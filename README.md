@@ -6,4 +6,4 @@ If there are any spaces or non-alphabetic characters in the plain text, these wi
 
 The plain text and key will be converted to uppercase. 
 
-If the key is shorter than the plain text, the key will be looped. 
+If the key is shorter than the plain/cipher text, the key will be looped. 
