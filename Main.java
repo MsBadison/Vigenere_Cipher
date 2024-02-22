@@ -3,24 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int menuChoice;
 
-        System.out.println("1. Create cipher");
-        System.out.println("2. Decode cipher");
-        System.out.println("3. Quit");
-        System.out.print("> ");
+        do {
+            showMenu();
+            menuChoice = scanner.nextInt();
 
-        int menuChoice = scanner.nextInt();
-
-        switch (menuChoice) {
-            case 1:
-                encodeMenuOption();
-                break;
-            case 2:
-                decodeMenuOption();
-                break;
-            case 3:
-                System.exit(0);
-        }
+            switch (menuChoice) {
+                case 1:
+                    encodeMenuOption();
+                    break;
+                case 2:
+                    decodeMenuOption();
+                    break;
+                case 3:
+                    System.exit(0);
+            }
+        } while (menuChoice != 3);
     }
 
     /**
@@ -88,7 +87,7 @@ public class Main {
         String key = scanner.nextLine().toUpperCase().replaceAll("[^a-zA-Z]", "");
 
         String cipherText = encode(plaintext, key);
-        System.out.print("The encrypted text is: " + cipherText);
+        System.out.println("The encrypted text is: " + cipherText);
     }
 
     /**
@@ -96,11 +95,22 @@ public class Main {
      */
     public static void decodeMenuOption () {
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Enter the text to be decoded (only letters): ");
         String ciphertext = scanner.nextLine().toUpperCase().replaceAll("[^a-zA-Z]", "");
+
         System.out.print("Enter the encryption key (only letters): ");
         String key = scanner.nextLine().toUpperCase().replaceAll("[^a-zA-Z]", "");
+
         String plaintext = decode(ciphertext, key);
-        System.out.print("The decrypted text is: " + plaintext);
+        System.out.println("The decrypted text is: " + plaintext);
+    }
+
+    public static void showMenu () {
+        System.out.println("1. Create cipher");
+        System.out.println("2. Decode cipher");
+        System.out.println("3. Quit");
+        System.out.print("> ");
     }
 }
+
