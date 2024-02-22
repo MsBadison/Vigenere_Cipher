@@ -1,27 +1,34 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int menuChoice;
+        int menuChoice = 0;
         boolean loop = true;
 
         do {
             showMenu();
-            menuChoice = scanner.nextInt();
+            try {
+                menuChoice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Not a valid choice. Please enter a number between 1 and 3.");
+                scanner.next();
+                continue;
+            }
 
             switch (menuChoice) {
                 case 1:
-                    encodeMenuOption();
+                    encodeMenuOption(scanner);
                     break;
                 case 2:
-                    decodeMenuOption();
+                    decodeMenuOption(scanner);
                     break;
                 case 3:
                     loop = false;
                     break;
                 default:
-                    System.out.println("Not a valid choice");
+                    System.out.println("Not a valid choice. Please choose 1, 2, or 3.");
             }
         } while (loop);
 
@@ -83,8 +90,7 @@ public class Main {
     /**
      * Gets user input and invokes encode function
      */
-    public static void encodeMenuOption () {
-        Scanner scanner = new Scanner(System.in);
+    public static void encodeMenuOption (Scanner scanner) {
 
         System.out.print("Enter the text to be encoded (only letters): ");
         String plaintext = scanner.nextLine().toUpperCase().replaceAll("[^a-zA-Z]", "");
@@ -99,8 +105,7 @@ public class Main {
     /**
      * Gets user input and invokes decode function
      */
-    public static void decodeMenuOption () {
-        Scanner scanner = new Scanner(System.in);
+    public static void decodeMenuOption (Scanner scanner) {
 
         System.out.print("Enter the text to be decoded (only letters): ");
         String ciphertext = scanner.nextLine().toUpperCase().replaceAll("[^a-zA-Z]", "");
